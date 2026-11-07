@@ -1,0 +1,634 @@
+{
+  "splits": {
+    "train": {
+      "first_step": 1,
+      "last_step": 305,
+      "rows": 1848001,
+      "fraud": 3440,
+      "fraud_rate": 0.0018614709
+    },
+    "val": {
+      "first_step": 306,
+      "last_step": 355,
+      "rows": 390465,
+      "fraud": 520,
+      "fraud_rate": 0.0013317455
+    },
+    "test": {
+      "first_step": 356,
+      "last_step": 408,
+      "rows": 377352,
+      "fraud": 625,
+      "fraud_rate": 0.0016562785
+    },
+    "stress": {
+      "first_step": 409,
+      "last_step": 743,
+      "rows": 154575,
+      "fraud": 3612,
+      "fraud_rate": 0.0233672974
+    }
+  },
+  "reference_prevalence": 0.0020788086009497254,
+  "max_fpr": 0.001,
+  "production_variant": "combined",
+  "variants": {
+    "transaction_only": {
+      "threshold": 0.08162351697683334,
+      "features": [
+        "log_amount",
+        "hour_of_day",
+        "is_transfer"
+      ],
+      "val": {
+        "accounts": 380169,
+        "mules": 520,
+        "mule_rate": 0.0013678127359148169,
+        "pr_auc_account": 0.3570755395221178,
+        "pr_auc_transaction": 0.3561871809681131,
+        "account": {
+          "tp": 187,
+          "fp": 259,
+          "fn": 333,
+          "tn": 379390,
+          "recall": 0.3596153846153846,
+          "precision": 0.4192825112107623,
+          "fpr": 0.0006822090931360283,
+          "fpr_upper_95": 0.0007555670356056327,
+          "precision_at_reference_prevalence": 0.523376644645908
+        },
+        "transaction": {
+          "tp": 187,
+          "fp": 262,
+          "fn": 333,
+          "tn": 389683,
+          "recall": 0.3596153846153846,
+          "precision": 0.41648106904231624,
+          "fpr": 0.0006718896254600008,
+          "fpr_upper_95": 0.0007437024966697126
+        },
+        "recall_transfer_mules": 0.2423076923076923,
+        "recall_cashout_mules": 0.47692307692307695
+      },
+      "test": {
+        "accounts": 370150,
+        "mules": 625,
+        "mule_rate": 0.0016885046602728624,
+        "pr_auc_account": 0.3802428855353005,
+        "pr_auc_transaction": 0.37972497533192306,
+        "account": {
+          "tp": 235,
+          "fp": 286,
+          "fn": 390,
+          "tn": 369239,
+          "recall": 0.376,
+          "precision": 0.4510556621880998,
+          "fpr": 0.0007739665787159191,
+          "fpr_upper_95": 0.000852966122337513,
+          "precision_at_reference_prevalence": 0.5029840557230222
+        },
+        "transaction": {
+          "tp": 235,
+          "fp": 288,
+          "fn": 390,
+          "tn": 376439,
+          "recall": 0.376,
+          "precision": 0.44933078393881454,
+          "fpr": 0.0007644793179145641,
+          "fpr_upper_95": 0.0008422263795761731
+        },
+        "recall_transfer_mules": 0.26517571884984026,
+        "recall_cashout_mules": 0.48717948717948717
+      },
+      "stress": {
+        "accounts": 153208,
+        "mules": 3612,
+        "mule_rate": 0.023575792386820532,
+        "pr_auc_account": 0.4549978835799552,
+        "pr_auc_transaction": 0.45416911707065644,
+        "account": {
+          "tp": 1415,
+          "fp": 1026,
+          "fn": 2197,
+          "tn": 148570,
+          "recall": 0.391749723145072,
+          "precision": 0.5796804588283491,
+          "fpr": 0.006858472151661809,
+          "fpr_upper_95": 0.007218517115916304,
+          "precision_at_reference_prevalence": 0.10633458259701689
+        },
+        "transaction": {
+          "tp": 1415,
+          "fp": 1026,
+          "fn": 2197,
+          "tn": 149937,
+          "recall": 0.391749723145072,
+          "precision": 0.5796804588283491,
+          "fpr": 0.006796367321794082,
+          "fpr_upper_95": 0.007153164050686662
+        },
+        "recall_transfer_mules": 0.27869757174392934,
+        "recall_cashout_mules": 0.5055555555555555
+      }
+    },
+    "behavior_only": {
+      "threshold": 0.07896820455789566,
+      "features": [
+        "log_amount",
+        "hour_of_day",
+        "is_transfer",
+        "log_orig_balance",
+        "log_dest_balance",
+        "balance_drop_ratio",
+        "inflow_share_of_dest"
+      ],
+      "val": {
+        "accounts": 380169,
+        "mules": 520,
+        "mule_rate": 0.0013678127359148169,
+        "pr_auc_account": 0.9210356985474316,
+        "pr_auc_transaction": 0.9210356985474316,
+        "account": {
+          "tp": 482,
+          "fp": 347,
+          "fn": 38,
+          "tn": 379302,
+          "recall": 0.926923076923077,
+          "precision": 0.5814234016887817,
+          "fpr": 0.0009140021440857212,
+          "fpr_upper_95": 0.0009983145703991,
+          "precision_at_reference_prevalence": 0.6787239084343858
+        },
+        "transaction": {
+          "tp": 482,
+          "fp": 347,
+          "fn": 38,
+          "tn": 389598,
+          "recall": 0.926923076923077,
+          "precision": 0.5814234016887817,
+          "fpr": 0.0008898690841016041,
+          "fpr_upper_95": 0.0009719564790514048
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 0.8538461538461538
+      },
+      "test": {
+        "accounts": 370150,
+        "mules": 625,
+        "mule_rate": 0.0016885046602728624,
+        "pr_auc_account": 0.919401931424914,
+        "pr_auc_transaction": 0.919401931424914,
+        "account": {
+          "tp": 575,
+          "fp": 364,
+          "fn": 50,
+          "tn": 369161,
+          "recall": 0.92,
+          "precision": 0.6123535676251332,
+          "fpr": 0.0009850483729111697,
+          "fpr_upper_95": 0.0010736713641732259,
+          "precision_at_reference_prevalence": 0.6605079957795361
+        },
+        "transaction": {
+          "tp": 575,
+          "fp": 364,
+          "fn": 50,
+          "tn": 376363,
+          "recall": 0.92,
+          "precision": 0.6123535676251332,
+          "fpr": 0.0009662169156975741,
+          "fpr_upper_95": 0.0010531466068668422
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 0.8397435897435898
+      },
+      "stress": {
+        "accounts": 153208,
+        "mules": 3612,
+        "mule_rate": 0.023575792386820532,
+        "pr_auc_account": 0.9895012764290091,
+        "pr_auc_transaction": 0.9894300293293585,
+        "account": {
+          "tp": 3368,
+          "fp": 186,
+          "fn": 244,
+          "tn": 149410,
+          "recall": 0.9324473975636767,
+          "precision": 0.947664603263928,
+          "fpr": 0.001243348752640445,
+          "fpr_upper_95": 0.0014025165252622266,
+          "precision_at_reference_prevalence": 0.6097175306939244
+        },
+        "transaction": {
+          "tp": 3368,
+          "fp": 187,
+          "fn": 244,
+          "tn": 150776,
+          "recall": 0.9324473975636767,
+          "precision": 0.9473980309423348,
+          "fpr": 0.001238714122003405,
+          "fpr_upper_95": 0.0013968390325199947
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 0.8644444444444445
+      }
+    },
+    "no_balance": {
+      "threshold": 0.11949919164180756,
+      "features": [
+        "log_amount",
+        "hour_of_day",
+        "is_transfer",
+        "acct_in_degree",
+        "acct_out_degree",
+        "acct_pass_through_ratio",
+        "acct_pagerank",
+        "cpty_in_degree",
+        "cpty_out_degree",
+        "cpty_pass_through_ratio",
+        "cpty_age_hours",
+        "cpty_in_degree_24h",
+        "cpty_pagerank",
+        "amount_vs_acct_avg_inflow"
+      ],
+      "val": {
+        "accounts": 380169,
+        "mules": 520,
+        "mule_rate": 0.0013678127359148169,
+        "pr_auc_account": 0.43934695751678743,
+        "pr_auc_transaction": 0.4366574982400059,
+        "account": {
+          "tp": 230,
+          "fp": 347,
+          "fn": 290,
+          "tn": 379302,
+          "recall": 0.4423076923076923,
+          "precision": 0.3986135181975737,
+          "fpr": 0.0009140021440857212,
+          "fpr_upper_95": 0.0009983145703991,
+          "precision_at_reference_prevalence": 0.5020121823813484
+        },
+        "transaction": {
+          "tp": 230,
+          "fp": 409,
+          "fn": 290,
+          "tn": 389536,
+          "recall": 0.4423076923076923,
+          "precision": 0.3599374021909233,
+          "fpr": 0.0010488658656990087,
+          "fpr_upper_95": 0.00113766829990872
+        },
+        "recall_transfer_mules": 0.38846153846153847,
+        "recall_cashout_mules": 0.49615384615384617
+      },
+      "test": {
+        "accounts": 370150,
+        "mules": 625,
+        "mule_rate": 0.0016885046602728624,
+        "pr_auc_account": 0.4887212260475521,
+        "pr_auc_transaction": 0.48863382543809236,
+        "account": {
+          "tp": 286,
+          "fp": 164,
+          "fn": 339,
+          "tn": 369361,
+          "recall": 0.4576,
+          "precision": 0.6355555555555555,
+          "fpr": 0.0004438130031797578,
+          "fpr_upper_95": 0.0005045847102637229,
+          "precision_at_reference_prevalence": 0.6823230075498624
+        },
+        "transaction": {
+          "tp": 286,
+          "fp": 164,
+          "fn": 339,
+          "tn": 376563,
+          "recall": 0.4576,
+          "precision": 0.6355555555555555,
+          "fpr": 0.0004353285004791268,
+          "fpr_upper_95": 0.0004949387231780717
+        },
+        "recall_transfer_mules": 0.402555910543131,
+        "recall_cashout_mules": 0.5128205128205128
+      },
+      "stress": {
+        "accounts": 153208,
+        "mules": 3612,
+        "mule_rate": 0.023575792386820532,
+        "pr_auc_account": 0.5891624320132022,
+        "pr_auc_transaction": 0.5889456676449377,
+        "account": {
+          "tp": 1607,
+          "fp": 873,
+          "fn": 2005,
+          "tn": 148723,
+          "recall": 0.44490586932447396,
+          "precision": 0.6479838709677419,
+          "fpr": 0.005835717532554347,
+          "fpr_upper_95": 0.006168729707065734,
+          "precision_at_reference_prevalence": 0.13704965297217822
+        },
+        "transaction": {
+          "tp": 1607,
+          "fp": 873,
+          "fn": 2005,
+          "tn": 150090,
+          "recall": 0.44490586932447396,
+          "precision": 0.6479838709677419,
+          "fpr": 0.005782873949245842,
+          "fpr_upper_95": 0.006112880161636123
+        },
+        "recall_transfer_mules": 0.37637969094922735,
+        "recall_cashout_mules": 0.5138888888888888
+      }
+    },
+    "combined": {
+      "threshold": 0.0726967602968216,
+      "features": [
+        "log_amount",
+        "hour_of_day",
+        "is_transfer",
+        "log_orig_balance",
+        "log_dest_balance",
+        "balance_drop_ratio",
+        "inflow_share_of_dest",
+        "acct_in_degree",
+        "acct_out_degree",
+        "cpty_out_degree",
+        "cpty_pass_through_ratio",
+        "cpty_age_hours",
+        "cpty_in_degree_24h",
+        "cpty_pagerank",
+        "amount_vs_acct_avg_inflow"
+      ],
+      "val": {
+        "accounts": 380169,
+        "mules": 520,
+        "mule_rate": 0.0013678127359148169,
+        "pr_auc_account": 0.9176185040225365,
+        "pr_auc_transaction": 0.9176185040225365,
+        "account": {
+          "tp": 480,
+          "fp": 347,
+          "fn": 40,
+          "tn": 379302,
+          "recall": 0.9230769230769231,
+          "precision": 0.5804111245465539,
+          "fpr": 0.0009140021440857212,
+          "fpr_upper_95": 0.0009983145703991,
+          "precision_at_reference_prevalence": 0.677816549052394
+        },
+        "transaction": {
+          "tp": 480,
+          "fp": 347,
+          "fn": 40,
+          "tn": 389598,
+          "recall": 0.9230769230769231,
+          "precision": 0.5804111245465539,
+          "fpr": 0.0008898690841016041,
+          "fpr_upper_95": 0.0009719564790514048
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 0.8461538461538461
+      },
+      "test": {
+        "accounts": 370150,
+        "mules": 625,
+        "mule_rate": 0.0016885046602728624,
+        "pr_auc_account": 0.9150471398386253,
+        "pr_auc_transaction": 0.9150471398386253,
+        "account": {
+          "tp": 568,
+          "fp": 392,
+          "fn": 57,
+          "tn": 369133,
+          "recall": 0.9088,
+          "precision": 0.5916666666666667,
+          "fpr": 0.0010608213246735673,
+          "fpr_upper_95": 0.001152642063773901,
+          "precision_at_reference_prevalence": 0.6408838211688325
+        },
+        "transaction": {
+          "tp": 568,
+          "fp": 392,
+          "fn": 57,
+          "tn": 376335,
+          "recall": 0.9088,
+          "precision": 0.5916666666666667,
+          "fpr": 0.0010405412938281568,
+          "fpr_upper_95": 0.001130607703678665
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 0.8173076923076923
+      },
+      "stress": {
+        "accounts": 153208,
+        "mules": 3612,
+        "mule_rate": 0.023575792386820532,
+        "pr_auc_account": 0.9850277192302465,
+        "pr_auc_transaction": 0.9849922177188909,
+        "account": {
+          "tp": 3296,
+          "fp": 182,
+          "fn": 316,
+          "tn": 149414,
+          "recall": 0.9125138427464009,
+          "precision": 0.9476710753306498,
+          "fpr": 0.0012166100697879622,
+          "fpr_upper_95": 0.0013741629813124917,
+          "precision_at_reference_prevalence": 0.6097485848466739
+        },
+        "transaction": {
+          "tp": 3296,
+          "fp": 183,
+          "fn": 316,
+          "tn": 150780,
+          "recall": 0.9125138427464009,
+          "precision": 0.9473986777809715,
+          "fpr": 0.0012122175632439736,
+          "fpr_upper_95": 0.0013687465366512054
+        },
+        "recall_transfer_mules": 0.9988962472406181,
+        "recall_cashout_mules": 0.8255555555555556
+      }
+    },
+    "leaky_demo": {
+      "threshold": 0.010036622174084187,
+      "features": [
+        "log_amount",
+        "hour_of_day",
+        "is_transfer",
+        "log_orig_balance",
+        "log_dest_balance",
+        "balance_drop_ratio",
+        "inflow_share_of_dest",
+        "log_orig_balance_after",
+        "log_dest_balance_after",
+        "orig_ledger_error",
+        "dest_ledger_error"
+      ],
+      "val": {
+        "accounts": 380169,
+        "mules": 520,
+        "mule_rate": 0.0013678127359148169,
+        "pr_auc_account": 1.0,
+        "pr_auc_transaction": 1.0,
+        "account": {
+          "tp": 520,
+          "fp": 324,
+          "fn": 0,
+          "tn": 379325,
+          "recall": 1.0,
+          "precision": 0.6161137440758294,
+          "fpr": 0.0008534198694056879,
+          "fpr_upper_95": 0.0009350182783979258,
+          "precision_at_reference_prevalence": 0.7093809818511848
+        },
+        "transaction": {
+          "tp": 520,
+          "fp": 324,
+          "fn": 0,
+          "tn": 389621,
+          "recall": 1.0,
+          "precision": 0.6161137440758294,
+          "fpr": 0.0008308864070574056,
+          "fpr_upper_95": 0.0009103313405204837
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 1.0
+      },
+      "test": {
+        "accounts": 370150,
+        "mules": 625,
+        "mule_rate": 0.0016885046602728624,
+        "pr_auc_account": 1.0,
+        "pr_auc_transaction": 1.0,
+        "account": {
+          "tp": 625,
+          "fp": 264,
+          "fn": 0,
+          "tn": 369261,
+          "recall": 1.0,
+          "precision": 0.703037120359955,
+          "fpr": 0.0007144306880454638,
+          "fpr_upper_95": 0.0007904841252293946,
+          "precision_at_reference_prevalence": 0.7446245293697142
+        },
+        "transaction": {
+          "tp": 625,
+          "fp": 264,
+          "fn": 0,
+          "tn": 376463,
+          "recall": 1.0,
+          "precision": 0.703037120359955,
+          "fpr": 0.0007007727080883504,
+          "fpr_upper_95": 0.0007753728021187584
+        },
+        "recall_transfer_mules": 1.0,
+        "recall_cashout_mules": 1.0
+      },
+      "stress": {
+        "accounts": 153208,
+        "mules": 3612,
+        "mule_rate": 0.023575792386820532,
+        "pr_auc_account": 0.9996698066043185,
+        "pr_auc_transaction": 0.9996697449578004,
+        "account": {
+          "tp": 3610,
+          "fp": 144,
+          "fn": 2,
+          "tn": 149452,
+          "recall": 0.9994462901439646,
+          "precision": 0.961640916355887,
+          "fpr": 0.0009625925826893767,
+          "fpr_upper_95": 0.0011038186799870939,
+          "precision_at_reference_prevalence": 0.6838338426797669
+        },
+        "transaction": {
+          "tp": 3610,
+          "fp": 144,
+          "fn": 2,
+          "tn": 150819,
+          "recall": 0.9994462901439646,
+          "precision": 0.961640916355887,
+          "fpr": 0.0009538761153395203,
+          "fpr_upper_95": 0.001093824130203866
+        },
+        "recall_transfer_mules": 0.9988962472406181,
+        "recall_cashout_mules": 1.0
+      }
+    }
+  },
+  "baselines": {
+    "isFlaggedFraud": {
+      "val": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 520,
+        "tn": 379649,
+        "recall": 0.0,
+        "precision": 0.0,
+        "fpr": 0.0,
+        "fpr_upper_95": 7.127651363225558e-06,
+        "precision_at_reference_prevalence": 0.0
+      },
+      "test": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 624,
+        "tn": 369525,
+        "recall": 0.0016,
+        "precision": 1.0,
+        "fpr": 0.0,
+        "fpr_upper_95": 7.322928581211518e-06,
+        "precision_at_reference_prevalence": 1.0
+      },
+      "stress": {
+        "tp": 12,
+        "fp": 0,
+        "fn": 3600,
+        "tn": 149596,
+        "recall": 0.0033222591362126247,
+        "precision": 1.0,
+        "fpr": 0.0,
+        "fpr_upper_95": 1.8088558864591954e-05,
+        "precision_at_reference_prevalence": 1.0
+      }
+    },
+    "exact_drain_rule": {
+      "val": {
+        "tp": 517,
+        "fp": 1,
+        "fn": 3,
+        "tn": 379648,
+        "recall": 0.9942307692307693,
+        "precision": 0.9980694980694981,
+        "fpr": 2.634011942610148e-06,
+        "fpr_upper_95": 1.1808076333673807e-05,
+        "precision_at_reference_prevalence": 0.9987298345244978
+      },
+      "test": {
+        "tp": 608,
+        "fp": 0,
+        "fn": 17,
+        "tn": 369525,
+        "recall": 0.9728,
+        "precision": 1.0,
+        "fpr": 0.0,
+        "fpr_upper_95": 7.322928581211518e-06,
+        "precision_at_reference_prevalence": 1.0
+      },
+      "stress": {
+        "tp": 3524,
+        "fp": 0,
+        "fn": 88,
+        "tn": 149596,
+        "recall": 0.9756367663344407,
+        "precision": 1.0,
+        "fpr": 0.0,
+        "fpr_upper_95": 1.8088558864591954e-05,
+        "precision_at_reference_prevalence": 1.0
+      }
+    }
+  }
+}

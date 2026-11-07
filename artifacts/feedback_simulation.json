@@ -1,0 +1,359 @@
+{
+  "first_step": 356,
+  "retrain_every_hours": 96,
+  "victim_report_rate": 0.5,
+  "scenarios": {
+    "control": {
+      "retrains": [
+        {
+          "step": 475,
+          "mules": 553,
+          "alerts": 568,
+          "champion_hits": 507,
+          "challenger_hits": 502,
+          "champion": {
+            "tp": 507,
+            "fp": 61,
+            "fn": 46,
+            "tn": 41704,
+            "recall": 0.9168173598553345,
+            "precision": 0.8926056338028169,
+            "fpr": 0.0014605530946965163,
+            "fpr_upper_95": 0.0018019324682856106
+          },
+          "challenger": {
+            "tp": 502,
+            "fp": 66,
+            "fn": 51,
+            "tn": 41699,
+            "recall": 0.9077757685352622,
+            "precision": 0.8838028169014085,
+            "fpr": 0.0015802705614749192,
+            "fpr_upper_95": 0.0019339070849554631
+          },
+          "promoted": true
+        },
+        {
+          "step": 571,
+          "mules": 474,
+          "alerts": 469,
+          "champion_hits": 434,
+          "challenger_hits": 428,
+          "champion": {
+            "tp": 434,
+            "fp": 35,
+            "fn": 40,
+            "tn": 40374,
+            "recall": 0.9156118143459916,
+            "precision": 0.9253731343283582,
+            "fpr": 0.000866143680863174,
+            "fpr_upper_95": 0.0011425994098722796
+          },
+          "challenger": {
+            "tp": 407,
+            "fp": 10,
+            "fn": 67,
+            "tn": 40399,
+            "recall": 0.8586497890295358,
+            "precision": 0.9760191846522782,
+            "fpr": 0.000247469623103764,
+            "fpr_upper_95": 0.0004139249758907862
+          },
+          "promoted": true
+        },
+        {
+          "step": 667,
+          "mules": 474,
+          "alerts": 439,
+          "champion_hits": 435,
+          "challenger_hits": 429,
+          "champion": {
+            "tp": 435,
+            "fp": 4,
+            "fn": 39,
+            "tn": 12900,
+            "recall": 0.9177215189873418,
+            "precision": 0.9908883826879271,
+            "fpr": 0.00030998140111593303,
+            "fpr_upper_95": 0.0006903303902046899
+          },
+          "challenger": {
+            "tp": 448,
+            "fp": 34,
+            "fn": 26,
+            "tn": 12870,
+            "recall": 0.9451476793248945,
+            "precision": 0.9294605809128631,
+            "fpr": 0.0026348419094854307,
+            "fpr_upper_95": 0.0034886797445503703
+          },
+          "promoted": false
+        }
+      ],
+      "whole_replay": {
+        "one_line_rule": {
+          "recall": 0.9752183148454094,
+          "precision": 1.0,
+          "fpr": 0.0,
+          "tp": 4132,
+          "fp": 0,
+          "fn": 105,
+          "tn": 524223
+        },
+        "self_learning": {
+          "recall": 0.8763275902761388,
+          "precision": 0.8740583804143126,
+          "fpr": 0.0010205580449541513,
+          "tp": 3713,
+          "fp": 535,
+          "fn": 524,
+          "tn": 523688
+        },
+        "static_model": {
+          "recall": 0.9119660136889308,
+          "precision": 0.8706624605678234,
+          "fpr": 0.0010949538650536126,
+          "tp": 3864,
+          "fp": 574,
+          "fn": 373,
+          "tn": 523649
+        }
+      },
+      "first_promotion_step": 475,
+      "before_first_promotion": {
+        "one_line_rule": {
+          "recall": 0.9710896960711638,
+          "precision": 1.0,
+          "fpr": 0.0,
+          "tp": 1310,
+          "fp": 0,
+          "fn": 39,
+          "tn": 390752
+        },
+        "self_learning": {
+          "recall": 0.9206819866567828,
+          "precision": 0.74415817855003,
+          "fpr": 0.001092764720334125,
+          "tp": 1242,
+          "fp": 427,
+          "fn": 107,
+          "tn": 390325
+        },
+        "static_model": {
+          "recall": 0.9206819866567828,
+          "precision": 0.74415817855003,
+          "fpr": 0.001092764720334125,
+          "tp": 1242,
+          "fp": 427,
+          "fn": 107,
+          "tn": 390325
+        }
+      },
+      "after_first_promotion": {
+        "one_line_rule": {
+          "recall": 0.9771468144044322,
+          "precision": 1.0,
+          "fpr": 0.0,
+          "tp": 2822,
+          "fp": 0,
+          "fn": 66,
+          "tn": 133471
+        },
+        "self_learning": {
+          "recall": 0.8556094182825484,
+          "precision": 0.9581233036060488,
+          "fpr": 0.0008091645376149126,
+          "tp": 2471,
+          "fp": 108,
+          "fn": 417,
+          "tn": 133363
+        },
+        "static_model": {
+          "recall": 0.9078947368421053,
+          "precision": 0.9469122426868906,
+          "fpr": 0.0011013628428647422,
+          "tp": 2622,
+          "fp": 147,
+          "fn": 266,
+          "tn": 133324
+        }
+      }
+    },
+    "evasive": {
+      "retrains": [
+        {
+          "step": 475,
+          "mules": 342,
+          "alerts": 282,
+          "champion_hits": 221,
+          "challenger_hits": 223,
+          "champion": {
+            "tp": 221,
+            "fp": 61,
+            "fn": 121,
+            "tn": 41915,
+            "recall": 0.6461988304093568,
+            "precision": 0.7836879432624113,
+            "fpr": 0.0014532113588717362,
+            "fpr_upper_95": 0.0017928764289374074
+          },
+          "challenger": {
+            "tp": 236,
+            "fp": 100,
+            "fn": 106,
+            "tn": 41876,
+            "recall": 0.6900584795321637,
+            "precision": 0.7023809523809523,
+            "fpr": 0.00238231370306842,
+            "fpr_upper_95": 0.0028071141861195723
+          },
+          "promoted": false
+        },
+        {
+          "step": 571,
+          "mules": 280,
+          "alerts": 196,
+          "champion_hits": 165,
+          "challenger_hits": 176,
+          "champion": {
+            "tp": 165,
+            "fp": 31,
+            "fn": 115,
+            "tn": 40573,
+            "recall": 0.5892857142857143,
+            "precision": 0.8418367346938775,
+            "fpr": 0.000763471579154763,
+            "fpr_upper_95": 0.001024656449758449
+          },
+          "challenger": {
+            "tp": 158,
+            "fp": 8,
+            "fn": 122,
+            "tn": 40596,
+            "recall": 0.5642857142857143,
+            "precision": 0.9518072289156626,
+            "fpr": 0.00019702492365284208,
+            "fpr_upper_95": 0.0003496483934888987
+          },
+          "promoted": true
+        },
+        {
+          "step": 667,
+          "mules": 261,
+          "alerts": 165,
+          "champion_hits": 165,
+          "challenger_hits": 159,
+          "champion": {
+            "tp": 165,
+            "fp": 0,
+            "fn": 96,
+            "tn": 13117,
+            "recall": 0.632183908045977,
+            "precision": 1.0,
+            "fpr": 0.0,
+            "fpr_upper_95": 0.00020625652700171685
+          },
+          "challenger": {
+            "tp": 170,
+            "fp": 24,
+            "fn": 91,
+            "tn": 13093,
+            "recall": 0.6513409961685823,
+            "precision": 0.8762886597938144,
+            "fpr": 0.0018296866661584204,
+            "fpr_upper_95": 0.0025547333461819247
+          },
+          "promoted": false
+        }
+      ],
+      "whole_replay": {
+        "one_line_rule": {
+          "recall": 0.0,
+          "precision": 0.0,
+          "fpr": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 4237,
+          "tn": 524223
+        },
+        "self_learning": {
+          "recall": 0.35308000944064194,
+          "precision": 0.7513812154696132,
+          "fpr": 0.0009442546397239343,
+          "tp": 1496,
+          "fp": 495,
+          "fn": 2741,
+          "tn": 523728
+        },
+        "static_model": {
+          "recall": 0.3509558649988199,
+          "precision": 0.7214944201843765,
+          "fpr": 0.0010949538650536126,
+          "tp": 1487,
+          "fp": 574,
+          "fn": 2750,
+          "tn": 523649
+        }
+      },
+      "first_promotion_step": 571,
+      "before_first_promotion": {
+        "one_line_rule": {
+          "recall": 0.0,
+          "precision": 0.0,
+          "fpr": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2354,
+          "tn": 455882
+        },
+        "self_learning": {
+          "recall": 0.3619371282922685,
+          "precision": 0.6358208955223881,
+          "fpr": 0.0010704524416406,
+          "tp": 852,
+          "fp": 488,
+          "fn": 1502,
+          "tn": 455394
+        },
+        "static_model": {
+          "recall": 0.3619371282922685,
+          "precision": 0.6358208955223881,
+          "fpr": 0.0010704524416406,
+          "tp": 852,
+          "fp": 488,
+          "fn": 1502,
+          "tn": 455394
+        }
+      },
+      "after_first_promotion": {
+        "one_line_rule": {
+          "recall": 0.0,
+          "precision": 0.0,
+          "fpr": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1883,
+          "tn": 68341
+        },
+        "self_learning": {
+          "recall": 0.3420074349442379,
+          "precision": 0.989247311827957,
+          "fpr": 0.00010242753252074157,
+          "tp": 644,
+          "fp": 7,
+          "fn": 1239,
+          "tn": 68334
+        },
+        "static_model": {
+          "recall": 0.33722782793414763,
+          "precision": 0.8807212205270458,
+          "fpr": 0.0012583953995405394,
+          "tp": 635,
+          "fp": 86,
+          "fn": 1248,
+          "tn": 68255
+        }
+      }
+    }
+  }
+}
