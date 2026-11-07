@@ -1,4 +1,4 @@
-# Mule Account Flagger
+# MuleGuard AI
 
 Flags mule accounts in the [PaySim](https://www.kaggle.com/datasets/ealaxi/paysim1) mobile-money log (6.36M transactions) with a two-pass pipeline. A graph layer reads the relationships between accounts, a behavior layer reads the math of each transaction, and XGBoost makes the final call.
 
