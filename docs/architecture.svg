@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="750" viewBox="0 0 960 750" role="img" aria-labelledby="title desc">
+  <title id="title">Mule Account Flagger architecture</title>
+  <desc id="desc">The PaySim transaction log feeds two first-pass layers, a graph layer and a behavior layer. Their combined features go to an XGBoost classifier, which gives each transaction a mule risk score, rolled up to the account. Accounts at or above the threshold are flagged.</desc>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; }
+    .title { font-size: 17px; font-weight: 600; }
+    .sub { font-size: 13px; fill: #57606a; }
+    .item { font-size: 13.5px; fill: #1f2328; }
+    .path { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 12.5px; fill: #57606a; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+    .wire { fill: none; stroke: #57606a; stroke-width: 1.8; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <!-- White card so the diagram reads on GitHub's light and dark themes -->
+  <rect x="0.5" y="0.5" width="959" height="749" rx="16" fill="#ffffff" stroke="#d0d7de"/>
+
+  <!-- Input -->
+  <rect x="300" y="28" width="360" height="64" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="480" y="55" text-anchor="middle" class="title">PaySim transaction log</text>
+  <text x="480" y="77" text-anchor="middle" class="sub">6.36M transactions, cleaned and split by time</text>
+
+  <!-- Split into the two first-pass layers -->
+  <path class="wire" d="M480 92 V116"/>
+  <path class="wire" d="M245 116 H715"/>
+  <path class="wire" d="M245 116 V146" marker-end="url(#arrow)"/>
+  <path class="wire" d="M715 116 V146" marker-end="url(#arrow)"/>
+
+  <!-- Pass 1: graph layer -->
+  <rect x="60" y="150" width="370" height="150" rx="10" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+  <text x="245" y="173" text-anchor="middle" class="label" style="fill:#0969da">PASS 1</text>
+  <text x="245" y="197" text-anchor="middle" class="title">Graph layer</text>
+  <text x="245" y="217" text-anchor="middle" class="path">mule/graph_layer.py</text>
+  <text x="245" y="245" text-anchor="middle" class="item">Money flows, hubs and new accounts</text>
+  <text x="245" y="265" text-anchor="middle" class="item">PageRank, components, 24h velocity</text>
+  <text x="245" y="285" text-anchor="middle" class="item">Uses only past transactions</text>
+
+  <!-- Pass 1: behavior layer -->
+  <rect x="530" y="150" width="370" height="150" rx="10" fill="#dafbe1" stroke="#4ac26b" stroke-width="1.5"/>
+  <text x="715" y="173" text-anchor="middle" class="label" style="fill:#1a7f37">PASS 1</text>
+  <text x="715" y="197" text-anchor="middle" class="title">Behavior layer</text>
+  <text x="715" y="217" text-anchor="middle" class="path">mule/behavior_layer.py</text>
+  <text x="715" y="245" text-anchor="middle" class="item">Amount and hour of day</text>
+  <text x="715" y="265" text-anchor="middle" class="item">Balances before the transaction</text>
+  <text x="715" y="285" text-anchor="middle" class="item">Implied balance drop</text>
+
+  <!-- Merge -->
+  <path class="wire" d="M245 300 V326 H715 V300"/>
+  <path class="wire" d="M480 326 V350" marker-end="url(#arrow)"/>
+
+  <!-- Combined features -->
+  <rect x="300" y="354" width="360" height="64" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="480" y="381" text-anchor="middle" class="title">Combined features</text>
+  <text x="480" y="402" text-anchor="middle" class="path">mule/features.py</text>
+
+  <path class="wire" d="M480 418 V442" marker-end="url(#arrow)"/>
+
+  <!-- Pass 2: XGBoost -->
+  <rect x="300" y="446" width="360" height="78" rx="10" fill="#fbefff" stroke="#c297ff" stroke-width="1.5"/>
+  <text x="480" y="469" text-anchor="middle" class="label" style="fill:#8250df">PASS 2</text>
+  <text x="480" y="493" text-anchor="middle" class="title">XGBoost classifier</text>
+  <text x="480" y="513" text-anchor="middle" class="path">mule/model.py</text>
+
+  <path class="wire" d="M480 524 V548" marker-end="url(#arrow)"/>
+
+  <!-- Risk score -->
+  <rect x="270" y="552" width="420" height="64" rx="10" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="480" y="579" text-anchor="middle" class="title">Mule risk score</text>
+  <text x="480" y="600" text-anchor="middle" class="sub">per transaction, rolled up to each account</text>
+
+  <path class="wire" d="M480 616 V640" marker-end="url(#arrow)"/>
+
+  <!-- Decision -->
+  <rect x="230" y="644" width="500" height="80" rx="10" fill="#fff1e5" stroke="#fb8f44" stroke-width="1.5"/>
+  <text x="480" y="670" text-anchor="middle" class="title">Flag if risk ≥ threshold</text>
+  <text x="480" y="691" text-anchor="middle" class="sub">threshold set on validation to target a 0.1% false positive rate</text>
+  <text x="480" y="711" text-anchor="middle" class="path">mule/evaluate.py → flagged_accounts.csv</text>
+</svg>

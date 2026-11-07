@@ -23,26 +23,7 @@ Three things to know before quoting these numbers:
 
 ## Architecture
 
-```
-                      PaySim raw transaction log
-                                  |
-                 +----------------+----------------+
-                 |                                 |
-   Pass 1: graph layer               Pass 1: behavior layer
-   mule/graph_layer.py               mule/behavior_layer.py
-   money flows, hubs, novelty,       amount, hour, pre-transaction
-   as of the past only               balances, implied balance drop
-                 |                                 |
-                 +----------------+----------------+
-                                  |
-                   Combined features (mule/features.py)
-                                  |
-                  Pass 2: XGBoost (mule/model.py)
-                                  |
-         Mule risk score per transaction, rolled up to the account
-                                  |
-        Flag if risk >= threshold (mule/evaluate.py) -> flagged_accounts.csv
-```
+![Architecture: a graph layer and a behavior layer feed an XGBoost classifier, which scores each account's mule risk and flags accounts above the threshold](docs/architecture.svg)
 
 ## Run it
 
@@ -275,6 +256,7 @@ run_feedback_loop.py     Runs the self-learning loop (off by default)
 simulate_feedback_loop.py  Dry run of the loop on PaySim
 tests/                   Leakage, decision and self-learning tests
 artifacts/               Models, metrics, charts, flagged_accounts.csv
+docs/architecture.svg    Architecture diagram
 feedback/                Created only when self-learning runs; holds live data, git-ignored
 ```
 
